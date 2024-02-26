@@ -67,7 +67,7 @@ const fetchWithRetry = async (url: string, retry = 0): Promise<Response> => {
       ],
     });
 
-    logger.info(`Begin crawling ${topic}`);
+    logger.info(`Begin crawling ${topic.permalink}`);
     while (hasMorePage) {
       try {
         logger.info(`Page ${page}`);
