@@ -1,0 +1,11 @@
+{
+  "ts-node": {
+    "swc": true
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": [
+      "ES2020",
+    ]
+  }
+}
