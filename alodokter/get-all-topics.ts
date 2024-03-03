@@ -4,16 +4,6 @@ import pino from 'pino';
 import sanitize from "sanitize-html";
 import { topics } from "./topics";
 
-// const pinoTee = pino.transport({
-//   target: 'pino-tee',
-//   options: {
-//     filters: {
-//       info: 'info.log',
-//       error: 'error.log',
-//       debug: 'debug.log'
-//     }
-//   }
-// })
 const logger = pino({
   level: 'debug'
 }, pino.destination({
