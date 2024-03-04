@@ -4,8 +4,10 @@
   },
   "compilerOptions": {
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "ES2020",
-    ]
+    ],
+    "downlevelIteration": true
   }
 }
