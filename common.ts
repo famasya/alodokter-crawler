@@ -1,12 +1,14 @@
 import pino from 'pino';
 
-export const logger = pino({
+export const Logger = (outfile = 'out') => pino({
   level: 'debug',
   transport: {
     targets: [
       {
         target: 'pino/file',
-        options: { destination: 'links.log' }
+        options: {
+          destination: `${outfile}_out.log`
+        }
       },
       {
         target: 'pino/file',
@@ -15,6 +17,8 @@ export const logger = pino({
     ]
   }
 });
+
+const logger = Logger('common');
 
 export const fetchWithRetry = async (url: string, retry = 0): Promise<Response> => {
   const delay = 500;
@@ -32,7 +36,7 @@ export const fetchWithRetry = async (url: string, retry = 0): Promise<Response> 
     return response;
   } catch (error) {
     if (retry < 3) {
-      logger.debug(`Request ${url} failed, retrying after ${delay}ms...`);
+      logger.info(`Request ${url} failed, ${retry} retry after ${delay}ms...`);
       await new Promise(resolve => setTimeout(resolve, delay * (retry + 1)));
       return fetchWithRetry(url, retry + 1);
     }

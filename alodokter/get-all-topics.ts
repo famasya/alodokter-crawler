@@ -1,9 +1,10 @@
 import { createObjectCsvWriter } from "csv-writer";
 import parse from "node-html-parser";
 import sanitize from "sanitize-html";
-import { fetchWithRetry, logger } from "../common";
+import { Logger, fetchWithRetry } from "../common";
 import { topics } from "./topics";
 
+const logger = Logger('alodokter-links');
 
 (async () => {
   for (const topic of topics) {
